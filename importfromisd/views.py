@@ -26,9 +26,10 @@ def bos(request):
     Cam02Array = [4, 5, 6]
     Cam03Array = [8, 9, 10]
     Cam04Array = [11, 12, 13]
+    Cam05Array = [31, 32, 33]
     # Определяем есть ли Турникет в списке
     if int(DeviceCode) in Cam01Array or int(DeviceCode) in Cam02Array or int(DeviceCode) in Cam03Array or int(
-            DeviceCode) in Cam04Array:
+            DeviceCode) in Cam04Array or int(DeviceCode) in Cam05Array:
         # Если да, то определяем порт и название камеры
         if int(DeviceCode) in Cam01Array:
             UDP_PORT = 2551
@@ -42,6 +43,10 @@ def bos(request):
         if int(DeviceCode) in Cam04Array:
             UDP_PORT = 2556
             pos_name = "PPS-CAM04 Lift B"
+        if int(DeviceCode) in Cam05Array:
+            UDP_PORT = 2557
+            pos_name = "PPS-CAM05 Lift L"
+        
         # Распарсиваем строку даты времени
         DateTime = list(DateTime)
         month = ''.join(DateTime[4:6])
